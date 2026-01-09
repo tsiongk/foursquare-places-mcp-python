@@ -12,9 +12,10 @@ from places import places_tools
 server = MCPServer(
     name="foursquare-places-mcp",
     http_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
+    streamable_http_stateless=True,
 )
 
 
 async def main() -> None:
     server.collect(*places_tools)
-    await server.serve(port=3015)
+    await server.serve(port=8080)
